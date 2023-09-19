@@ -45,7 +45,6 @@ export function ListAppointment() {
   }
 
   const deleteProduct = async (service) => {
-    console.log(service);
     await toast.promise(api.delete(`services/${service.id}`), {
       pending: "Deletando serviço...",
       success: "Serviço deletado com sucesso!",
@@ -90,7 +89,7 @@ export function ListAppointment() {
                   key={serv.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCellStyle component="th" scope="prod">
+                  <TableCellStyle component="th" scope="serv">
                     {serv.name}
                   </TableCellStyle>
                   <TableCellStyle>{formatCurrency(serv.price)}</TableCellStyle>

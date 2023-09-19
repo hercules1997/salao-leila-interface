@@ -22,7 +22,7 @@ import api from "../../../services/api";
 export function NewService() {
   const [fileName, setFileName] = useState(null);
   const [categories, setCategories] = useState([]);
-  const { push } = useNavigate();
+  const navigate = useNavigate();
   try {
   } catch (error) {}
   const schema = Yup.object().shape({
@@ -71,7 +71,7 @@ export function NewService() {
       });
 
       setTimeout(() => {
-        push(paths.ListAppointment);
+        navigate(paths.ListAppointment);
       }, 3000);
     } catch (error) {
       console.log(error);
