@@ -63,22 +63,22 @@ export function ListAppointment() {
           <TableHeadStyle className="table-head">
             <TableRowStyle>
               <TableCellStyle className="table-row" align="center">
-                Produto
+                Serviços
               </TableCellStyle>
               <TableCellStyle style={{ width: "120px" }} className="table-row">
                 Preço
               </TableCellStyle>
               <TableCellStyle className="table-row" align="center">
-                Produtos em oferta
+                Serviços em oferta
               </TableCellStyle>
               <TableCellStyle align="center" className="table-row">
-                Imagem do produto
+                Imagem do serviço
               </TableCellStyle>
               <TableCellStyle align="center" className="table-row">
                 Editar
               </TableCellStyle>
               <TableCellStyle align="center" className="table-row">
-                Deletar
+                Excluir
               </TableCellStyle>
             </TableRowStyle>
           </TableHeadStyle>
@@ -97,7 +97,7 @@ export function ListAppointment() {
                     {isOffer(serv.offer)}
                   </TableCellStyle>
                   <TableCellStyle align="center">
-                    <Img src={serv.url} alt="Imagem produto" />
+                    <Img src={serv.url} alt="Imagem do serviço" />
                   </TableCellStyle>
                   <TableCellStyle align="center">
                     <ModeEditIconStyle onClick={() => editProduct(serv)} />
