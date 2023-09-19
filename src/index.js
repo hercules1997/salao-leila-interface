@@ -1,17 +1,42 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Flip, ToastContainer } from "react-toastify";
+import { FirebaseAppProvider } from "reactfire";
+import AppProvider from "./hooks";
+import Routes from "./routes/routes";
+import GlobalStyles from "./common/styles/globalStyles";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const firebaseConfig = {
+  apiKey: "AIzaSyB0z3nURHhMYaNzt3BucArFQ5HNM_PIP3Y",
+  authDomain: "leila-salao.firebaseapp.com",
+  projectId: "leila-salao",
+  storageBucket: "leila-salao.appspot.com",
+  messagingSenderId: "840759625848",
+  appId: "1:840759625848:web:71270656599455745dc58d",
+  measurementId: "G-H2J8C1JMS5",
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <>
+    <AppProvider>
+      <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+        <Routes />
+      </FirebaseAppProvider>
+    </AppProvider>
+    <ToastContainer
+      position="top-center"
+      autoClose={3000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      transition={Flip}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="colored"
+    />
+    <GlobalStyles />
+  </>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
