@@ -1,70 +1,144 @@
-# Getting Started with Create React App
+<div align="center">
+    <img src="https://github.com/hercules1997/salao-leila-interface/assets/109186074/26650bf8-8cda-461a-8c50-b3f69561b4a0" width="300px"/>
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br />
 
-## Available Scripts
+<h2 align="center">
+   Salão da Leila 
+</h2>
 
-In the project directory, you can run:
+<p align="center">
+  <img alt="linguagens mais usadas" src="https://img.shields.io/github/languages/count/hercules1997/salao-leila-interface?color=9E775A">
+   <img alt="Tamanho do aquivo no repo" src="https://img.shields.io/github/repo-size/hercules1997/salao-leila-interface?color=9E775A">
+  <img alt="Commit recente no GitHub" src="https://img.shields.io/github/last-commit/hercules1997/salao-leila-interface?color=9E775A">
+  <img alt="Feito por Hércules" src="https://img.shields.io/badge/made%20by-hercules1997-%20?color=9E775A">
+  <img alt="Project top programing language" src="https://img.shields.io/github/languages/top/hercules1997/salao-leila-interface?color=9E775A">
+</p> 
 
-### `npm start`
+<p align="center">
+  <a href="https://salao-leila-interface.vercel.app/">Acessar o projeto</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## :computer: Projeto (Em Desenvolvimento)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ A página do salão da Leila tem como finalidade de rergistrar os agendamentos dos serviços para seus clientes
 
-### `npm run build`
+ <p align="center">
+  <img src="https://github.com/hercules1997/salao-leila-interface/assets/109186074/11e99e76-5b6e-4a15-ad91-3ae9e8946341">
+  <img src="https://github.com/hercules1997/salao-leila-interface/assets/109186074/613bfe6f-c9fc-4286-8760-68090e1bc1c5">
+  <img src="https://github.com/hercules1997/salao-leila-interface/assets/109186074/33a23945-160e-4ec2-b8d1-2038d5832133" >
+  <img src="https://github.com/hercules1997/salao-leila-interface/assets/109186074/0536119f-cd9b-48c0-ae91-b6918f6418df" >
+  <img src="https://github.com/hercules1997/salao-leila-interface/assets/109186074/99786a59-8f18-4d31-b5c8-6effc9511529" >
+  <img src="https://github.com/hercules1997/salao-leila-interface/assets/109186074/bfeda917-e913-47ac-b6e1-ffbf1f346e8b" >
+  <img src="https://github.com/hercules1997/salao-leila-interface/assets/109186074/41a19dd5-3a5b-471b-b85c-9ac06ac59809" >
+</p>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## :rocket: Construido com:
+<details>
+  <summary>Backend</summary>
+  
+-   [Node.js](https://nodejs.org/)
+-   [Express](https://expressjs.com/)
+-   [MongoDB](https://www.mongodb.com/)
+-   [Docker](https://www.docker.com/docker-community)
+-   [PostgreSQL](https://www.postgresql.org/)
+-   [JWT](https://jwt.io/)
+-   [Multer](https://github.com/expressjs/multer)
+-   [uuidv4](https://www.npmjs.com/package/uuidv4)
+-   [Bcrypt](https://www.npmjs.com/package/bcrypt)
+-   [Cors](https://www.npmjs.com/package/cors)
+-   [Handlebars](https://handlebarsjs.com/)
+-   [Nodemailer](https://nodemailer.com/about/)
+-   [ESLint](https://eslint.org/)
+-   [Prettier](https://prettier.io/)
+-   [VS Code](https://code.visualstudio.com/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+</details>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<details>
+  <summary>Frontend</summary>
 
-### `npm run eject`
+-   [React](https://pt-br.reactjs.org/)
+-   [HooksForms](https://hooksform.dev/)
+-   [Styled Components](https://styled-components.com/)
+-   [Context API](https://reactjs.org/docs/context.html)
+-   [Polished](https://polished.js.org/)
+-   [Yup](https://www.npmjs.com/package/yup)
+-   [uuidv4](https://www.npmjs.com/package/uuidv4)
+-   [Axios](https://www.npmjs.com/package/axios)
+-   [MUI](https://mui.com/#/)
+-   [ESLint](https://eslint.org/)
+-   [Prettier](https://prettier.io/)
+-   [VS Code](https://code.visualstudio.com/)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+</details>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## :information_source: How to run
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Requisitos (Para rodar localmente)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+To run the application you will need:
+* [Git](https://git-scm.com)
+* [Node](https://nodejs.org/)
+* [Yarn](https://yarnpkg.com/) 
 
-## Learn More
+Pode utilizar o [Docker](https://www.docker.com/) rodar os bancos de dados.
+<br>
+caso use o docker, siga as etapas abaixo:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+# install Postgres image 
+$ docker run --name postgresimagename -e POSTGRES_PASSWORD=yourPassword -p 5432:5432 -d postgres
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# install Mongo image
+$ docker run --name mongoimagename -p 27017:27017 -d -t mongo
 
-### Code Splitting
+# start Postgres
+$ docker start postgresimagename
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# start Mongo
+docker start mongoimagename
 
-### Analyzing the Bundle Size
+```
+### Backend
+Now clone the repository and install the dependencies.
+```bash
+# Para o clone do repositório
+$ git clone https://github.com/hercules1997/api-salao-leila.git
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#Instalação das dependências
+$ yarn
 
-### Making a Progressive Web App
+# rodar as migrations
+$ yarn sequelize db:migrate
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# run api
+$ yarn dev
+```
 
-### Advanced Configuration
+### Frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+# git clone https://github.com/hercules1997/salao-leila-interface.git
+$ yarn
+$ yarn start
+```
 
-### Deployment
+## :mailbox_with_mail: Get in touch!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<a href="https://hercules1997.github.io/my-portfolio/" target="_blank" >
+  <img alt="Website - Hércules C Andrade" src="https://img.shields.io/badge/Website--%23F8952D?style=social">
+</a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.linkedin.com/in/hercules-chaves-andrade/" target="_blank" >
+  <img alt="Linkedin - Hércules C Andrade" src="https://img.shields.io/badge/Linkedin--%23F8952D?style=social&logo=linkedin">
+</a>&nbsp;&nbsp;&nbsp;
+<a href="mailto:hercules.chaves.andrade@gmail.com" target="_blank" >
+  <img alt="Email - Hércules C Andrade" src="https://img.shields.io/badge/Email--%23F8952D?style=social&logo=gmail">
+</a> 
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Hércules C Andrade.
