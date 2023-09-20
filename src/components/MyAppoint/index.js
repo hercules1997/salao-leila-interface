@@ -25,24 +25,33 @@ import {
 import { toast } from "react-toastify";
 import { useState } from "react";
 
-
-
 export function MyAppoint() {
   const navigate = useNavigate();
   const { myAppointment, deleteService } = useAppointment();
-  const [inputValue, setInputValue] = useState("");
-  console.log(inputValue);
-  const handleInputChange = (e) => {
+  const [inputValueTime, setInputValueTime] = useState("");
+  const [inputValueDate, setInputValueDate] = useState("");
+
+  const handleInputTime = (e) => {
     const { value } = e.target;
-    setInputValue(value);
+    setInputValueTime(JSON.stringify(value));
   };
+
+  const handleInputDate = (event) => {
+    const { value } = event.target;
+
+    setInputValueDate(JSON.stringify(value));
+  };
+
+  console.log(inputValueTime);
+  console.log(inputValueDate);
   const submitOrder = async () => {
     try {
       if (myAppointment.length > 0) {
         const appointment = myAppointment.map((service) => {
           return {
             id: service.id,
-            time: 123,
+            date: inputValueDate,
+            time: inputValueTime,
           };
         });
         await toast.promise(
@@ -54,7 +63,7 @@ export function MyAppoint() {
           }
         );
       } else {
-        alert("Carrinho vazio");
+        alert("Desculpe, nenhum agendamento adicionado");
       }
     } catch (error) {
       console.log(error);
@@ -96,8 +105,8 @@ export function MyAppoint() {
                   <ProductDecription></ProductDecription>
                   <div className="quantity-container">
                     Selecione a uma data e horário:
-                    <DateInput />
-                    <HoursInput onChange={handleInputChange} />
+                    <DateInput onChange={handleInputDate} />
+                    <HoursInput onChange={handleInputTime} />
                   </div>
                 </Content>
               </ContainerContent>

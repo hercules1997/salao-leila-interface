@@ -1,23 +1,22 @@
-import { LogoutOutlined } from '@mui/icons-material'
-import PropTypes from 'prop-types'
-import React from 'react'
+import { LogoutOutlined } from "@mui/icons-material";
+import PropTypes from "prop-types";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-
 import paths from "../../common/constants/paths";
 
-import { useUser } from '../../hooks/UserContext'
-import listLinks from './menu-list'
+import { useUser } from "../../hooks/UserContext";
+import listLinks from "./menu-list";
 import {
   ContainerItems,
   ContainerMenu,
   ListLink,
-  ContainerLogout
-} from './style'
-import { Logo } from '../../Pages/Client/Login/style';
-import LogoImg from '../../common/assets/logo.png'
-export function SideMenuAdmin ({ path }) {
-  const { logout } = useUser()
-  const { push } = useNavigate();
+  ContainerLogout,
+} from "./style";
+import { Logo } from "../../Pages/Client/Login/style";
+import LogoImg from "../../common/assets/logo.png";
+export function SideMenuAdmin({ path }) {
+  const { logout } = useUser();
+  const navigate = useNavigate();
 
   return (
     <ContainerMenu>
@@ -35,7 +34,8 @@ export function SideMenuAdmin ({ path }) {
       <ContainerLogout
         onClick={() => {
           logout();
-          push(paths.Login);
+
+          navigate(paths.Login);
         }}
       >
         <ListLink style={{ color: "#FF0000" }}>
@@ -48,5 +48,5 @@ export function SideMenuAdmin ({ path }) {
 }
 
 SideMenuAdmin.propTypes = {
-  path: PropTypes.string
-}
+  path: PropTypes.string,
+};

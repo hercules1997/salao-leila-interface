@@ -20,7 +20,7 @@
     "react-elastic-carousel": "^0.11.5",
     "react-firebaseui": "^6.0.0",
     "react-hook-form": "^7.46.1",
-    "react-router-dom": "v6",
+    "react-router-dom": "6",
     "react-scripts": "5.0.1",
     "react-select": "^5.7.4",
     "react-toastify": "^9.1.3",

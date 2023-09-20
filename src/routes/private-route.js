@@ -1,15 +1,9 @@
-import PropTypes from "prop-types";
 import React from "react";
-import { Route, Navigate } from "react-router-dom";
-import { Header } from "../components";
+import {  Navigate } from "react-router-dom";
 import paths from "../common/constants/paths";
 
-export function PrivateRoute({ component, isAdmin, ...rest }) {
+export function PrivateRoute({ children, redirectTo, isAdmin,  }) {
   const user = localStorage.getItem("salaoleila:userData");
-
-  if (!user) {
-    return <Navigate to={paths.Login} />;
-  }
 
   if (isAdmin && !JSON.parse(user).admin) {
     return <Navigate to={paths.HomeInit} />;
@@ -17,13 +11,8 @@ export function PrivateRoute({ component, isAdmin, ...rest }) {
 
   return (
     <React.Fragment>
-      {!isAdmin && <Header />}
-      <Route {...rest} element={component} />
+      {user ? children : <Navigate  to={redirectTo}   />}
     </React.Fragment>
   );
 }
 
-PrivateRoute.propTypes = {
-  component: PropTypes.oneOfType([PropTypes.func]),
-  isAdmin: PropTypes.bool,
-};

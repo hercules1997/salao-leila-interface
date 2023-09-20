@@ -11,7 +11,6 @@ import { Button, ErrorMessage } from "../../../components";
 import paths from "../../../common/constants/paths";
 import { auth } from "./firebase";
 import { useUser } from "../../../hooks/UserContext";
-import apiTopBurger from "../../../services/api";
 import {
   Container,
   Background,
@@ -23,6 +22,7 @@ import {
   SingLink,
 } from "./style";
 import { GoogleAuthProvider } from "firebase/auth";
+import api from "../../../services/api";
 
 export function Login() {
   const navigate = useNavigate();
@@ -46,29 +46,28 @@ export function Login() {
   const onSubmit = async (clientData) => {
     try {
       const { data } = await toast.promise(
-      apiTopBurger.post("sessions", {
-        email: clientData.email,
-        password: clientData.password,
-      }),
-      {
-        pending: "Verificando seus dados...",
-        success: "Seja bem-vindo(a)!",
-        error: "Dados incorretos",
-      }
-    );
+        api.post("sessions", {
+          email: clientData.email,
+          password: clientData.password,
+        }),
+        {
+          pending: "Verificando seus dados...",
+          success: "Seja bem-vindo(a)!",
+          error: "Dados incorretos",
+        }
+      );
 
-    putUserData(data);
-    setTimeout(() => {
-      if (data.admin) {
-        navigate(paths.AppointmentStatus);
-      } else {
-        navigate(paths.HomeInit);
-      }
-    }, 1000);
+      putUserData(data);
+      setTimeout(() => {
+        if (data.admin) {
+          navigate(paths.AppointmentStatus);
+        } else {
+          navigate(paths.HomeInit);
+        }
+      }, 1000);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-    
   };
 
   const uiConfig = {
@@ -83,9 +82,12 @@ export function Login() {
         <ContainerItens>
           <Logo src={LogoLogin} />
 
-        
-            <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
-         
+          <StyledFirebaseAuth
+            uiConfig={uiConfig}
+            firebaseAuth={auth}
+            
+          />
+
           <form noValidate onSubmit={handleSubmit(onSubmit)}>
             <h1>Login</h1>
 

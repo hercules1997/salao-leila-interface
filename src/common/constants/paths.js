@@ -11,7 +11,6 @@ const paths = {
   EditServices: "/editar-servicos",
   NewService: "/novo-produto",
   ListAppointment: "/lista-de-servicos",
-
 };
 
 export default paths
