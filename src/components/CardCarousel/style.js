@@ -30,10 +30,10 @@ export const Container = styled.div`
 
   .rec.rec-arrow {
     background-color: transparent;
-    margin-left: 30px;
-    margin-right: 30px;
-    height: 100%;
-    border-radius: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    /* height: 100%; */
+    border-radius: 50%;
     color: #9e775a;
     @media screen and (max-width: 993px) {
       margin: 0;
@@ -68,8 +68,8 @@ export const Container = styled.div`
 
 export const ContainerItens = styled.div`
   width: 100%;
-  padding: 20px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
+  padding: 0px 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;

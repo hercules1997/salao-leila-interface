@@ -5,7 +5,7 @@ const paths = {
   Appointment: "/agendamentos",
   AppointmentStatus: "/status-agendamentos",
   Public: "/",
-  OurServices: "/serviços",
+  OurServices: "/servicos",
   ListCategory: "/listar-categorias",
   NewCategory: "/nova-categoria",
   EditServices: "/editar-servicos",

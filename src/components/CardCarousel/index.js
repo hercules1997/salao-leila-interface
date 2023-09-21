@@ -71,7 +71,7 @@ export function CardCarousel () {
               <ImgCategory src={category.url} alt="Fotos da categorias" />
               <Button
                 to={{
-                  pathname: '/home',
+                  pathname: '/servicos',
                   state: { categoryId: category.id }
                 }}
               >

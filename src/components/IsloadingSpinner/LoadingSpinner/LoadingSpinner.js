@@ -9,7 +9,7 @@ export const Spinner = styled.div`
   width: 18px;
   height: 18px;
 
-  background-color: pink;
+  background-color: #ffff;
   border-radius: 7px;
   display: inline-block;
   animation: bounce 1s infinite ease-in-out both;
