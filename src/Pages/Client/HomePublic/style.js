@@ -1,17 +1,28 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Container = styled.div`
-  background: rgb(47, 47, 47);
-  box-shadow: 0px 8px 25px gray;
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 100%;
-`
+`;
+export const ContainerAvaliacao = styled.div`
+  background: beige;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 40px;
+  width: 100%;
+
+  h2 {
+    text-align: center;
+    color: #9e775a;
+    margin-bottom: 15px;
+  }
+`;
 export const ContainerItens = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #181617;
+
 
   justify-content: center;
   text-align: center;
@@ -26,4 +37,3 @@ export const ContainerItens = styled.div`
     color: #9e775a;
   }
 `;
-

@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  background-color: #2f2f2f;
   background: beige;
 
   width: 100%;
@@ -14,16 +13,19 @@ export const Container = styled.div`
 
   .rec.rec-dot {
     background: transparent;
-    border: 1px solid gray;
+    box-shadow: 0px 0px 8px #9e775a;
+    border: none !important;
   }
   .rec.rec-dot:hover {
     background: #9e775a;
-    border: 1px solid #d6d6ba;
-    box-shadow: 0px 0px 2px gray;
+    border: none;
+    box-shadow: 0px 0px 2px #ffff;
   }
   .rec.rec-dot_active {
-    background: #ffff;
-    box-shadow: 0px 0px 2px gray;
+    background: #9e775a;
+    border: none;
+    box-shadow: none;
+    box-shadow: 0px 0px 9px #000;
   }
 
   .rec.rec-arrow {
