@@ -1,4 +1,4 @@
-export * from "./Client/HistoryAppointments";
+
 export * from "./Admin/Home";
 export * from "./Client/Login";
 export * from "./Client/MyScheduling";

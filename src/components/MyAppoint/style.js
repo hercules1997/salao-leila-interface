@@ -42,7 +42,7 @@ export const Img = styled.img`
 `;
 export const ProductDecription = styled.p`
   display: flex;
-
+  word-break: break-all;
   color: gray;
   p {
     color: gray;
@@ -60,7 +60,7 @@ export const Decription = styled.div`
     display: flex;
     flex-direction: column;
   }
-  .quanty {
+  .dispo {
     display: flex;
     gap: 15px;
   }
@@ -75,16 +75,30 @@ export const Content = styled.div`
 
   font-size: 1rem;
 
-  .quantity-container {
+  form {
     display: flex;
     text-align: center;
     align-items: center;
     justify-content: center;
     gap: 20px;
-    margin-top: 10px;
-  }
-
-  .img {
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      span {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        align-items: center;
+      }
+    }
+    .container-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+    }
   }
 
   button {
@@ -103,8 +117,7 @@ export const Content = styled.div`
   }
 `;
 
-export const ButtonStyleTwo = styled(Button)``;
-export const ButtonStyleThree = styled(Button)`
+export const ButtonStyle = styled(Button)`
   margin-top: 1px;
   margin-bottom: 5px;
   padding: 10px;
@@ -175,18 +188,18 @@ export const HoursInput = styled.input.attrs({ type: "time" })`
   cursor: pointer;
 `;
 
-export const ButtonAppointment = styled(Button)`
-  margin-top: 1px;
-  background: gray;
-  margin-bottom: 20px;
-  padding: 10px;
-  justify-content: end;
-  align-items: end;
-  float: right;
+export const ButtonSubmitAppointment = styled(Button)`
+  margin: 0;
+  text-align: center;
+  display: flex;
+  border: 0.5px solid #704b34cf !important;
+  padding: 10px !important;
+  justify-content: center !important;
+  align-items: center !important;
+
   font-size: 1rem;
-  width: auto;
 
   &:hover {
-    text-shadow: 0 0 10px black;
+    color: #ffff;
   }
 `;

@@ -3,9 +3,14 @@ import React from "react";
 
 import { SideMenuAdmin } from "../../components";
 import paths from "../../common/constants/paths";
-import AppointmentStatus from "./AppointmentStatus";
+
 import { NewService } from "./NewService";
-import { HomeInit, ListAppointment, OurServices } from "../../Pages";
+import {
+  HomeInit,
+  ListAppointment,
+  OurServices,
+  AppointmentStatus,
+} from "../../Pages";
 import { Container, ContainerItems } from "./style";
 function Admin({ path }) {
   return (

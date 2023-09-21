@@ -12,7 +12,7 @@ import {
   EmpyCart,
   ContainerButtom,
   TrashAt,
-  ButtonStyleThree,
+  ButtonStyle,
   ContainerContent,
   DateInput,
   Appointmernt,
@@ -20,7 +20,7 @@ import {
   ContainerEmpyCart,
   Decription,
   HoursInput,
-  ButtonAppointment,
+  ButtonSubmitAppointment,
 } from "./style";
 import { toast } from "react-toastify";
 import { useState } from "react";
@@ -42,8 +42,6 @@ export function MyAppoint() {
     setInputValueDate(JSON.stringify(value));
   };
 
-  console.log(inputValueTime);
-  console.log(inputValueDate);
   const submitOrder = async () => {
     try {
       if (myAppointment.length > 0) {
@@ -73,28 +71,29 @@ export function MyAppoint() {
     <ContainerMaster>
       <Container>
         {myAppointment && myAppointment.length ? (
-          myAppointment.map((product) => (
+          myAppointment.map((service) => (
             <>
               <ContainerContent>
-                <Trash onClick={() => deleteService(product.id)}>
+                <Trash onClick={() => deleteService(service.id)}>
                   <TrashAt />
                 </Trash>
-                <Content key={product.id}>
-                  <Img src={product.url} />
+                <Content key={service.id}>
+                  <Img src={service.url} />
                   <Decription>
                     <div className="decriptAling">
                       <ProductDecription>
-                        Tipo: {product.name}{" "}
+                        Tipo: {service.name}
                       </ProductDecription>
                       <ProductDecription>
-                        Detalhes: {product.decription}
+                        Detalhes: {service.decription}
                       </ProductDecription>
                       <ProductDecription>
-                        Valor: {product.price}
+                        Valor: {service.price}
                       </ProductDecription>
                     </div>
                     <p>Dias disponiveis:</p>
-                    <div className="quanty">
+                    {/* //TODO Fazer a lógica dos dias disponiveis // */}
+                    <div className="dispo">
                       <sapn>Seg</sapn>
                       <sapn>Ter</sapn>
                       <sapn>Qua</sapn>
@@ -102,12 +101,35 @@ export function MyAppoint() {
                       <sapn>Sex</sapn>
                     </div>
                   </Decription>
-                  <ProductDecription></ProductDecription>
-                  <div className="quantity-container">
-                    Selecione a uma data e horário:
-                    <DateInput onChange={handleInputDate} />
-                    <HoursInput onChange={handleInputTime} />
-                  </div>
+
+                  <form>
+                    <div>
+                      <span>
+                        <label>Data</label>
+                        <DateInput onChange={handleInputDate} required />
+                      </span>
+                      <span>
+                        <label>Hora</label>
+                        <HoursInput onChange={handleInputTime} required />
+                      </span>
+                    </div>
+                    <div className="container-button">
+                      <ButtonSubmitAppointment
+                        onClick={() => {
+                          if (inputValueDate && inputValueTime !== " ") {
+                            submitOrder();
+                            deleteService(service.id);
+                          } else {
+                            alert(
+                              "Por favor, preencha os campos de data e hora."
+                            );
+                          }
+                        }}
+                      >
+                        Agendar
+                      </ButtonSubmitAppointment>
+                    </div>
+                  </form>
                 </Content>
               </ContainerContent>
             </>
@@ -122,15 +144,15 @@ export function MyAppoint() {
         )}
       </Container>
       <ContainerButtom>
-        <ButtonStyleThree onClick={() => navigate(paths.OurServices)}>
+        <ButtonStyle onClick={() => navigate(paths.OurServices)}>
           Selecionar serviços
-        </ButtonStyleThree>
+        </ButtonStyle>
       </ContainerButtom>
-      {myAppointment && myAppointment.length > 0 ? (
-        <ButtonAppointment onClick={submitOrder}>Agendar</ButtonAppointment>
+      {/* {myAppointment && myAppointment.length > 0 ? (
+       
       ) : (
         <></>
-      )}
+      )} */}
     </ContainerMaster>
   );
 }

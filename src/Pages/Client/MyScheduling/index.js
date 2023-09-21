@@ -5,7 +5,6 @@ import IsloadingSpinner from "../../../components/IsloadingSpinner";
 import { Container, Wrapper, WrapperItens } from "./style";
 
 export function MyScheduling() {
-  // const { myAppoitment } = useAppointment();
 
   return (
     <Container>
