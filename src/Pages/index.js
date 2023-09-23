@@ -1,3 +1,4 @@
+// * EXPORTA TODAS AS PAGES */
 
 export * from "./Admin/Home";
 export * from "./Client/Login";

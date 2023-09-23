@@ -8,7 +8,6 @@ export const Container = styled.div`
   height: 100vh;
 
   @media screen and (max-width: 993px) {
-    display: flex;
     width: 100%;
   }
 `
@@ -27,7 +26,6 @@ export const Background = styled.span`
     display: none;
   }
 `
-
 
 
 export const Label = styled.label`

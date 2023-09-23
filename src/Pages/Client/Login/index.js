@@ -24,9 +24,12 @@ import {
 import { GoogleAuthProvider } from "firebase/auth";
 import api from "../../../services/api";
 
+// * FUNÇÃO PARA RENDERIZAÇÃO DO LOGIN */
+
 export function Login() {
   const navigate = useNavigate();
   const { putUserData } = useUser();
+  // * SCHEMA PARA VALIDAÇÕES COM YUP   */
 
   const schema = Yup.object().shape({
     email: Yup.string()
@@ -69,6 +72,7 @@ export function Login() {
       console.log(error);
     }
   };
+  // * CONFIG DO GOOGLE  */
 
   const uiConfig = {
     signInFlow: "popup",
@@ -82,11 +86,7 @@ export function Login() {
         <ContainerItens>
           <Logo src={LogoLogin} />
 
-          <StyledFirebaseAuth
-            uiConfig={uiConfig}
-            firebaseAuth={auth}
-            
-          />
+          <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
 
           <form noValidate onSubmit={handleSubmit(onSubmit)}>
             <h1>Login</h1>

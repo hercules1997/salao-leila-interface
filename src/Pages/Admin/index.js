@@ -12,6 +12,8 @@ import {
   AppointmentStatus,
 } from "../../Pages";
 import { Container, ContainerItems } from "./style";
+// * FUNÇÃO PARA RENDERIZAÇÃO DAS PAGES DE ADMIN */
+
 function Admin({ path }) {
   return (
     <Container>

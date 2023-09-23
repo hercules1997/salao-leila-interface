@@ -6,9 +6,7 @@ const AppointmentContext = createContext({});
 export const AppointmentProvider = ({ children }) => {
   const [myAppointment, setMyAppointment] = useState([]);
 
-  /*
-   FUNÇÃO DE ATUALIZAÇÃO NO LOCALSTORANGE
-  */
+  //*FUNÇÃO DE ATUALIZAÇÃO NO LOCALSTORANGE */
   const updateLocalStorange = async (service) => {
     await localStorage.setItem(
       "salaoleila:appoitmentInfo",

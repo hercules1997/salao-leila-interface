@@ -24,6 +24,7 @@ import {
 } from "./style";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import formatCurrency from "../../common/utils/formatCurrency";
 
 export function MyAppoint() {
   const navigate = useNavigate();
@@ -88,7 +89,7 @@ export function MyAppoint() {
                         Detalhes: {service.decription}
                       </ProductDecription>
                       <ProductDecription>
-                        Valor: {service.price}
+                        Valor: {formatCurrency(service.price)}
                       </ProductDecription>
                     </div>
                     <p>Dias disponiveis:</p>

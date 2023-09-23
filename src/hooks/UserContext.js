@@ -14,7 +14,7 @@ export const UserProvider = ({ children }) => {
     await localStorage.setItem("salaoleila:userData", JSON.stringify(userInfo));
   };
 
-// FUNÇÃO PARA ADICIONAR DADOS DA AUTENTICAÇÃO PELO GOOGLE (FALTA CRIAR A CONEXÃO)
+// * FUNÇÃO PARA ADICIONAR DADOS DA AUTENTICAÇÃO PELO GOOGLE (FALTA CRIAR A CONEXÃO)
   const loginUserGoogle = async (email, password) => {
     try {
       const userCredential = await signInWithEmailAndPassword(

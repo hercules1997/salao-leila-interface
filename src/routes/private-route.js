@@ -4,6 +4,7 @@ import paths from "../common/constants/paths";
 
 export function PrivateRoute({ children, redirectTo, isAdmin,  }) {
   const user = localStorage.getItem("salaoleila:userData");
+  // * FUNÇÃO PARA TORNAR ROTAS PRIVADAS */
 
   if (isAdmin && !JSON.parse(user).admin) {
     return <Navigate to={paths.HomeInit} />;
@@ -11,7 +12,7 @@ export function PrivateRoute({ children, redirectTo, isAdmin,  }) {
 
   return (
     <React.Fragment>
-      {user ? children : <Navigate  to={redirectTo}   />}
+      {user ? children : <Navigate to={redirectTo} />}
     </React.Fragment>
   );
 }
