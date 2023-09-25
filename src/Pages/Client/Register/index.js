@@ -31,7 +31,11 @@ export function Register() {
     email: Yup.string()
       .email("Por favor digite um e-mail válido")
       .required("E-mail é obrigatório"),
-    phone: Yup.string().required("E-mail é obrigatório"),
+    ddd: Yup.string().required("DDD é obrigatório").max(3, "Máximo 3 números"),
+    phone: Yup.string()
+      .required("Telefone é obrigatório")
+      .max(9, "Máximo 9 números")
+      .min(9, "Mínimo 9 números"),
     password: Yup.string()
       .required("Senha obrigatória")
       .min(8, "Senha deve ter no mínimo 8 digitos"),
@@ -103,9 +107,14 @@ export function Register() {
             />
             <ErrorMessage>{errors.email?.message}</ErrorMessage>
             <div>
-              <span  className="ddd">
+              <span className="ddd">
                 <Label>DDD</Label>
-                <Input type="number" />
+                <Input
+                  type="number"
+                  {...register("ddd")}
+                  error={errors.ddd?.message}
+                />
+                <ErrorMessage>{errors.ddd?.message}</ErrorMessage>
               </span>
               <span>
                 <Label>Telefone</Label>
