@@ -1,11 +1,10 @@
-import CheckBoxIcon from '@mui/icons-material/CheckBox'
-import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault'
-import Paper from '@mui/material/Paper'
-import React, { useEffect, useState } from 'react'
-import { toast } from 'react-toastify'
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
+import Paper from "@mui/material/Paper";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
-
-import formatCurrency from '../../../common/utils/formatCurrency'
+import formatCurrency from "../../../common/utils/formatCurrency";
 import {
   Container,
   Img,
@@ -16,40 +15,51 @@ import {
   TableHeadStyle,
   TableRowStyle,
   TableStyle,
-  DeleteForeverIconStyle
-} from './style'
-import api from '../../../services/api'
+  DeleteForeverIconStyle,
+} from "./style";
+import api from "../../../services/api";
 
 export function ListAppointment() {
   const [services, setServices] = useState();
 
   useEffect(() => {
     async function loadOrders() {
-      const { data } = await api.get("services");
-
-      setServices(data);
+      try {
+        const { data } = await api.get("services");
+        setServices(data);
+      } catch (error) {
+        console.error("Erro ao carregar serviços:", error);
+      }
     }
 
     loadOrders();
   }, [services]);
 
+  // Função para exibir ícone de oferta ou indisponível
   function isOffer(offerStatus) {
-    if (offerStatus) {
-      return <CheckBoxIcon className="checkYes" />;
-    }
-    return <DisabledByDefaultIcon className="checkNo" />;
+    return offerStatus ? (
+      <CheckBoxIcon className="checkYes" />
+    ) : (
+      <DisabledByDefaultIcon className="checkNo" />
+    );
   }
 
+  // Função para editar um produto
   function editProduct(service) {
-    
+    //TODO adicionar a lógica de edição
   }
 
+  // Função para excluir um produto
   const deleteProduct = async (service) => {
-    await toast.promise(api.delete(`services/${service.id}`), {
-      pending: "Deletando serviço...",
-      success: "Serviço deletado com sucesso!",
-      error: "Falha ao deletar serviço, por favor tente novamente",
-    });
+    try {
+      await toast.promise(api.delete(`services/${service.id}`), {
+        pending: "Deletando serviço...",
+        success: "Serviço deletado com sucesso!",
+        error: "Falha ao deletar serviço, por favor tente novamente",
+      });
+    } catch (error) {
+      console.error("Erro ao deletar serviço:", error);
+    }
   };
 
   return (

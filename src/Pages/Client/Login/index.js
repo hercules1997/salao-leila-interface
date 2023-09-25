@@ -24,20 +24,19 @@ import {
 import { GoogleAuthProvider } from "firebase/auth";
 import api from "../../../services/api";
 
-// * FUNÇÃO PARA RENDERIZAÇÃO DO LOGIN */
-
+// Função para renderização da tela de login
 export function Login() {
   const navigate = useNavigate();
   const { putUserData } = useUser();
-  // * SCHEMA PARA VALIDAÇÕES COM YUP   */
 
+  // Schema para validações com Yup
   const schema = Yup.object().shape({
     email: Yup.string()
       .email("Por favor digite um e-mail válido")
       .required("E-mail é obrigatório"),
     password: Yup.string()
       .required("Senha obrigatória")
-      .min(8, "Senha deve ter no mínimo 8 digitos"),
+      .min(8, "Senha deve ter no mínimo 8 dígitos"),
   });
 
   const {
@@ -72,8 +71,8 @@ export function Login() {
       console.log(error);
     }
   };
-  // * CONFIG DO GOOGLE  */
 
+  // Configuração do FirebaseUI para login com o Google
   const uiConfig = {
     signInFlow: "popup",
     signInSuccessUrl: "/home",

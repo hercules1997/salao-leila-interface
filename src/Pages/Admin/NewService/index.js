@@ -1,4 +1,3 @@
-import { yupResolver } from "@hookform/resolvers/yup";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import React, { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
@@ -6,25 +5,27 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 
-import { ErrorMessage } from "../../../components";
-import paths from "../../../common/constants/paths";
-
+// Importações de componentes, estilos e serviços
+import { ErrorMessage } from "../../../components"; // Importa o componente ErrorMessage
+import paths from "../../../common/constants/paths"; // Importa constantes de paths
 import {
-  Container,
-  Label,
-  Input,
-  ButtonStyle,
-  LabelUpload,
-  ReactSelectStyles,
-} from "./style";
-import api from "../../../services/api";
+  Container, // Estilo Container
+  Label, // Rótulo de input
+  Input, // Campo de input
+  ButtonStyle, // Estilo de botão
+  LabelUpload, // Rótulo para upload de arquivo
+  ReactSelectStyles, // Estilo para seleção
+} from "./style"; // Importa estilos do componente
+import api from "../../../services/api"; // Importa o serviço de API
+import { yupResolver } from "@hookform/resolvers/yup";
 
+// Componente NewService para adicionar um novo serviço
 export function NewService() {
-  const [fileName, setFileName] = useState(null);
-  const [categories, setCategories] = useState([]);
-  const navigate = useNavigate();
-  try {
-  } catch (error) {}
+  const [fileName, setFileName] = useState(null); // Estado para armazenar o nome do arquivo selecionado
+  const [categories, setCategories] = useState([]); // Estado para armazenar as categorias de serviço
+  const navigate = useNavigate(); // Hook de navegação
+
+  // Esquema de validação com Yup
   const schema = Yup.object().shape({
     name: Yup.string().required("Nome obrigatório"),
     price: Yup.string().required("Preço obrigatório"),
@@ -43,11 +44,14 @@ export function NewService() {
       )
       .test("type", "Carregue arquivos apenas jpeg/png", (value) => {
         return (
-          value[0]?.type === "image/jpeg" || value[0]?.type === "image/png"
+          value[0]?.type === "image/jpeg" ||
+          value[0]?.type === "image/png" ||
+          value[0]?.type === "image/webp"
         );
       }),
   });
 
+  // useForm para gerenciar o formulário com o esquema de validação
   const {
     register,
     handleSubmit,
@@ -55,6 +59,7 @@ export function NewService() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
+  // Função que é executada quando o formulário é enviado
   const onSubmit = async (data) => {
     try {
       const serviceDataFormData = new FormData();
@@ -64,12 +69,14 @@ export function NewService() {
       serviceDataFormData.append("category_id", data.category.id);
       serviceDataFormData.append("file", data.file[0]);
 
+      //  toast.promise para exibir mensagens de sucesso ou erro ao enviar o formulário
       await toast.promise(api.post("services", serviceDataFormData), {
         pending: "Registrando Serviço...",
         success: "Serviço registrado com sucesso!",
         error: "Falha ao registrar, por favor tente novamente!",
       });
 
+      //  setTimeout para navegar para a página de listagem após um atraso de 3 segundos
       setTimeout(() => {
         navigate(paths.ListAppointment);
       }, 3000);
@@ -78,6 +85,7 @@ export function NewService() {
     }
   };
 
+  // Efeito para carregar categorias de serviço
   useEffect(() => {
     async function loadCategories() {
       const { data } = await api.get("categories");
@@ -88,6 +96,7 @@ export function NewService() {
 
   return (
     <Container>
+      {/* Formulário com onSubmit que chama a função onSubmit */}
       <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <div>
           <Label>Nome</Label>
@@ -118,6 +127,7 @@ export function NewService() {
         </div>
 
         <div>
+          {/* Componente para carregar uma imagem */}
           <LabelUpload>
             {fileName || (
               <>
@@ -140,6 +150,7 @@ export function NewService() {
           <ErrorMessage>{errors.file?.message}</ErrorMessage>
         </div>
         <div>
+          {/* Componente Controller para o campo de seleção de categoria */}
           <Controller
             name="category"
             control={control}
@@ -159,7 +170,8 @@ export function NewService() {
           <ErrorMessage>{errors.category?.message}</ErrorMessage>
         </div>
 
-        <ButtonStyle>Adiconar produto</ButtonStyle>
+        {/* Botão para adicionar o produto */}
+        <ButtonStyle>Adicionar produto</ButtonStyle>
       </form>
     </Container>
   );

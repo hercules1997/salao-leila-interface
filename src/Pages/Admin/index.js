@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+// Importações de componentes e constantes
 import { SideMenuAdmin } from "../../components";
 import paths from "../../common/constants/paths";
-
 import { NewService } from "./NewService";
 import {
   HomeInit,
@@ -12,14 +12,16 @@ import {
   AppointmentStatus,
 } from "../../Pages";
 import { Container, ContainerItems } from "./style";
-// * FUNÇÃO PARA RENDERIZAÇÃO DAS PAGES DE ADMIN */
 
+// Função para renderizar as páginas de administração
 function Admin({ path }) {
   return (
     <Container>
+      {/* Componente de menu lateral para administração */}
       <SideMenuAdmin path={path} />
 
       <ContainerItems>
+        {/* Renderização condicional das páginas com base no caminho (path) */}
         {path === paths.AppointmentStatus && (
           <AppointmentStatus path={paths.AppointmentStatus} />
         )}
@@ -34,6 +36,7 @@ function Admin({ path }) {
   );
 }
 
+// PropType para o componente Admin
 Admin.propTypes = {
   match: PropTypes.shape({
     path: PropTypes.string,

@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { Button } from "../../../components/Button";
 
+// Estilos para o container principal
 export const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -14,7 +15,6 @@ export const Container = styled.div`
     background: #ffff;
     padding: 35px;
     justify-content: space-around;
-
     color: gray;
     width: 700px;
     height: 500px;
@@ -22,10 +22,13 @@ export const Container = styled.div`
     gap: 20px;
   }
 `;
+
+// Estilos para rótulos de input
 export const Label = styled.p`
   font-size: 1rem;
 `;
 
+// Estilos para campos de input
 export const Input = styled.input`
   width: 100%;
   height: 40px;
@@ -34,7 +37,6 @@ export const Input = styled.input`
   font-size: 17px;
   padding: 12px;
   outline: none;
-
   border: none;
   border: ${(props) => (props.error ? "2px solid #FF0000" : "none")};
 
@@ -42,12 +44,16 @@ export const Input = styled.input`
     -webkit-appearance: none;
   }
 `;
+
+// Estilos para o botão de envio
 export const ButtonStyle = styled(Button)`
   font-size: 16px;
   padding: 10px;
   width: 100%;
   margin-top: 0;
 `;
+
+// Estilos para o rótulo de upload
 export const LabelUpload = styled.label`
   cursor: pointer;
   display: flex;
@@ -64,6 +70,8 @@ export const LabelUpload = styled.label`
     width: 1px;
   }
 `;
+
+// Estilos para o componente ReactSelect
 export const ReactSelectStyles = styled(ReactSelect)`
   color: #000;
 

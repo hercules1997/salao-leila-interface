@@ -7,21 +7,20 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 
-import LogoRegister from '../../../common/assets/logo.png'
-import ImgRegister from '../../../common/assets/ImgRegister.jpg'
+import LogoRegister from "../../../common/assets/logo.png";
+import ImgRegister from "../../../common/assets/ImgRegister.jpg";
 import { ErrorMessage } from "../../../components";
 import paths from "../../../common/constants/paths";
 
 import apiTopBurger from "../../../services/api";
-import { Container, ContainerItens, ContainerMaster, Input, Logo } from "../Login/style";
+import { Container, ContainerMaster, Logo } from "../Login/style";
 import {
-
   Background,
- 
-
-  Label,
+  Input,
   ButtonStyle,
   SingLink,
+  Label,
+  ContainerItens,
 } from "./style";
 
 export function Register() {
@@ -32,8 +31,7 @@ export function Register() {
     email: Yup.string()
       .email("Por favor digite um e-mail válido")
       .required("E-mail é obrigatório"),
-    phone: Yup.string()
-      .required("E-mail é obrigatório"),
+    phone: Yup.string().required("E-mail é obrigatório"),
     password: Yup.string()
       .required("Senha obrigatória")
       .min(8, "Senha deve ter no mínimo 8 digitos"),
@@ -82,7 +80,7 @@ export function Register() {
 
   return (
     <ContainerMaster>
-      <Container  style={{ height: "580px"}}>
+      <Container style={{ height: "580px" }}>
         <ContainerItens>
           <Logo style={{ width: "50px" }} src={LogoRegister} />
 
@@ -104,14 +102,21 @@ export function Register() {
               error={errors.email?.message}
             />
             <ErrorMessage>{errors.email?.message}</ErrorMessage>
-
-            <Label>Telefone</Label>
-            <Input
-              type="number"
-              {...register("phone")}
-              error={errors.phone?.message}
-            />
-            <ErrorMessage>{errors.phone?.message}</ErrorMessage>
+            <div>
+              <span  className="ddd">
+                <Label>DDD</Label>
+                <Input type="number" />
+              </span>
+              <span>
+                <Label>Telefone</Label>
+                <Input
+                  type="number"
+                  {...register("phone")}
+                  error={errors.phone?.message}
+                />
+                <ErrorMessage>{errors.phone?.message}</ErrorMessage>
+              </span>
+            </div>
 
             <Label>Senha</Label>
             <Input
@@ -135,7 +140,9 @@ export function Register() {
             </SingLink>
           </form>
         </ContainerItens>
-        <Background><img src={ImgRegister} /></Background>
+        <Background>
+          <img src={ImgRegister} />
+        </Background>
       </Container>
     </ContainerMaster>
   );
