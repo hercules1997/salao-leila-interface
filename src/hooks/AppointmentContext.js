@@ -18,22 +18,20 @@ export const AppointmentProvider = ({ children }) => {
   };
 
   // Função para adicionar um serviço ao agendamento
-  const putServiceInAppointment = async (service) => {
+  const putServiceInAppoitment = async (service) => {
     const cartIndex = myAppointment.findIndex((serv) => serv.id === service.id);
-    let newAppointmentService = [];
+    let newApointService = [];
 
     if (cartIndex >= 0) {
-      // Se o serviço já estiver no agendamento, aumenta a quantidade
-      newAppointmentService = myAppointment;
-      newAppointmentService[cartIndex].quantity =
-        newAppointmentService[cartIndex].quantity + 1;
+      newApointService = myAppointment;
+      newApointService[cartIndex].quantity =
+        newApointService[cartIndex].quantity + 1;
     } else {
-      // Se o serviço não estiver no agendamento, adiciona com quantidade 1
       service.quantity = 1;
-      newAppointmentService = [...myAppointment, service];
-      setMyAppointment(newAppointmentService);
+      newApointService = [...myAppointment, service];
+      setMyAppointment(newApointService);
     }
-    await updateLocalStorage(newAppointmentService);
+    await updateLocalStorage(newApointService);
   };
 
   // Função para remover um serviço do agendamento
@@ -62,7 +60,7 @@ export const AppointmentProvider = ({ children }) => {
     // Fornecer o contexto com as funções e dados de agendamento
     <AppointmentContext.Provider
       value={{
-        putServiceInAppointment,
+        putServiceInAppoitment,
         myAppointment,
         deleteService,
       }}
