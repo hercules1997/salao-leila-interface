@@ -20,7 +20,6 @@ export function Header() {
   const { logout, userData } = useUser();
 
   const navigate = useNavigate();
-  console.log();
   return (
     <>
       <Container>

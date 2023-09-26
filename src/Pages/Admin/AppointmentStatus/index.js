@@ -38,7 +38,6 @@ export function AppointmentStatus() {
     });
   };
 
-  console.log(appointment);
   return (
     <Container>
       <TableContainerStyle component={Paper} className="table-container">

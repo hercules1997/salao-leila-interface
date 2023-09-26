@@ -149,11 +149,6 @@ export function MyAppoint() {
           Selecionar serviços
         </ButtonStyle>
       </ContainerButtom>
-      {/* {myAppointment && myAppointment.length > 0 ? (
-       
-      ) : (
-        <></>
-      )} */}
     </ContainerMaster>
   );
 }
