@@ -29,28 +29,18 @@ import formatCurrency from "../../common/utils/formatCurrency";
 export function MyAppoint() {
   const navigate = useNavigate();
   const { myAppointment, deleteService } = useAppointment();
-  const [inputValueTime, setInputValueTime] = useState("");
-  const [inputValueDate, setInputValueDate] = useState("");
+  const [inputTime, setTime] = useState("");
+  const [inputDate, setDate] = useState("");
 
-  const handleInputTime = (e) => {
-    const { value } = e.target;
-    setInputValueTime(JSON.stringify(value));
-  };
-
-  const handleInputDate = (event) => {
-    const { value } = event.target;
-
-    setInputValueDate(JSON.stringify(value));
-  };
-
+  // Função para envio dos dados para o agendamento
   const submitOrder = async () => {
     try {
       if (myAppointment.length > 0) {
         const appointment = myAppointment.map((service) => {
           return {
             id: service.id,
-            date: inputValueDate,
-            time: inputValueTime,
+            date: inputDate,
+            time: inputTime,
           };
         });
         await toast.promise(
@@ -68,6 +58,8 @@ export function MyAppoint() {
       console.log(error);
     }
   };
+
+  // Retorno
   return (
     <ContainerMaster>
       <Container>
@@ -107,23 +99,30 @@ export function MyAppoint() {
                     <div>
                       <span>
                         <label>Data</label>
-                        <DateInput onChange={handleInputDate} required />
+                        <DateInput
+                          onChange={(e) => setDate(e.target.value)}
+                          required
+                        />
                       </span>
                       <span>
                         <label>Hora</label>
-                        <HoursInput onChange={handleInputTime} required />
+                        <HoursInput
+                          onChange={(e) => setTime(e.target.value)}
+                          required
+                        />
                       </span>
                     </div>
                     <div className="container-button">
                       <ButtonSubmitAppointment
                         onClick={() => {
-                          if (inputValueDate && inputValueTime !== " ") {
+                          if (inputDate && inputTime !== " ") {
                             submitOrder();
                             deleteService(service.id);
                           } else {
-                            alert(
-                              "Por favor, preencha os campos de data e hora."
-                            );
+                            toast({
+                              error:
+                                "Falha ao realizar o agendamento, tente novamente!",
+                            });
                           }
                         }}
                       >
