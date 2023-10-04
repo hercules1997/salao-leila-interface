@@ -1,13 +1,9 @@
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
 import Paper from "@mui/material/Paper";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-
-import formatCurrency from "../../../common/utils/formatCurrency";
+import formatDate from "../../../common/utils/formatDate";
 import {
   Container,
-  Img,
   ModeEditIconStyle,
   TableBodyStyle,
   TableCellStyle,
@@ -16,53 +12,44 @@ import {
   TableRowStyle,
   TableStyle,
   DeleteForeverIconStyle,
+  ListVoid,
 } from "./style";
 import api from "../../../services/api";
+import paths from "../../../common/constants/paths";
+import { useNavigate } from "react-router-dom";
 
 export function ListAppointment() {
-  const [services, setServices] = useState();
+  const [appointment, setAppointment] = useState();
+  const location = useNavigate();
 
   useEffect(() => {
     async function loadOrders() {
-      try {
-        const { data } = await api.get("services");
-        setServices(data);
-      } catch (error) {
-        console.error("Erro ao carregar serviços:", error);
-      }
+      const { data } = await api.get("appointment");
+
+      setAppointment(data);
     }
 
     loadOrders();
-  }, [services]);
+  }, []);
 
-  // Função para exibir ícone de oferta ou indisponível
-  function isOffer(offerStatus) {
-    return offerStatus ? (
-      <CheckBoxIcon className="checkYes" />
-    ) : (
-      <DisabledByDefaultIcon className="checkNo" />
-    );
+  // Função para editar status do serviço
+  function editAppointment(appoint) {
+    location(paths.EditAppointment, { state: { appoint } });
+
+
   }
 
-  // Função para editar um produto
-  function editProduct(service) {
-    //TODO adicionar a lógica de edição
-  }
-
-  // Função para excluir um produto
-  const deleteProduct = async (service) => {
-    try {
-      await toast.promise(api.delete(`services/${service.id}`), {
-        pending: "Deletando serviço...",
-        success: "Serviço deletado com sucesso!",
-        error: "Falha ao deletar serviço, por favor tente novamente",
-      });
-    } catch (error) {
-      console.error("Erro ao deletar serviço:", error);
-    }
+  // Função para cancelar o agendamento
+  const deleteAppointment = async (service) => {
+    await toast.promise(api.delete(`appointment/${service.id}`), {
+      pending: "Cancelando agendamento...",
+      success: "Agendamento deletado com sucesso!",
+      error: "Falha ao cancelar agendamento, por favor tente novamente",
+    });
   };
 
-  return (
+
+  return appointment?.length !== 0 ? (
     <Container>
       <TableContainerStyle component={Paper} className="table-container">
         <TableStyle
@@ -73,48 +60,54 @@ export function ListAppointment() {
           <TableHeadStyle className="table-head">
             <TableRowStyle>
               <TableCellStyle className="table-row" align="center">
-                Serviços
+                Clientes
               </TableCellStyle>
               <TableCellStyle style={{ width: "120px" }} className="table-row">
-                Preço
+                Status
               </TableCellStyle>
               <TableCellStyle className="table-row" align="center">
-                Serviços em oferta
+                Serviços
               </TableCellStyle>
               <TableCellStyle align="center" className="table-row">
-                Imagem do serviço
+                Data
+              </TableCellStyle>
+              <TableCellStyle align="center" className="table-row">
+                Horário
               </TableCellStyle>
               <TableCellStyle align="center" className="table-row">
                 Editar
               </TableCellStyle>
               <TableCellStyle align="center" className="table-row">
-                Excluir
+                Cancelar
               </TableCellStyle>
             </TableRowStyle>
           </TableHeadStyle>
           <TableBodyStyle>
-            {services &&
-              services.map((serv) => (
+            {appointment &&
+              appointment.map((appoint) => (
                 <TableRowStyle
-                  key={serv.id}
+                  key={appoint}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCellStyle component="th" scope="serv">
-                    {serv.name}
+                  <TableCellStyle component="th" scope="appoint">
+                    {appoint.user.name}
                   </TableCellStyle>
-                  <TableCellStyle>{formatCurrency(serv.price)}</TableCellStyle>
+                  <TableCellStyle>{appoint.status}</TableCellStyle>
                   <TableCellStyle align="center">
-                    {isOffer(serv.offer)}
-                  </TableCellStyle>
-                  <TableCellStyle align="center">
-                    <Img src={serv.url} alt="Imagem do serviço" />
+                    {appoint.services[0].name}
                   </TableCellStyle>
                   <TableCellStyle align="center">
-                    <ModeEditIconStyle onClick={() => editProduct(serv)} />
+                    {formatDate(appoint.date)}
+                  </TableCellStyle>
+                  <TableCellStyle align="center">{appoint.time}</TableCellStyle>
+                  <TableCellStyle align="center">
+                    <ModeEditIconStyle
+                      onClick={() => editAppointment(appoint)}
+                    />
                   </TableCellStyle>
                   <TableCellStyle align="center">
                     <DeleteForeverIconStyle
-                      onClick={() => deleteProduct(serv)}
+                      onClick={() => deleteAppointment(appoint)}
                     />
                   </TableCellStyle>
                 </TableRowStyle>
@@ -123,5 +116,7 @@ export function ListAppointment() {
         </TableStyle>
       </TableContainerStyle>
     </Container>
+  ) : (
+    <ListVoid>Lista Vazia</ListVoid>
   );
 }
