@@ -39,12 +39,14 @@ export function MyAppoint() {
         const appointment = myAppointment.map((service) => {
           return {
             id: service.id,
-            date: inputDate,
-            time: inputTime,
           };
         });
         await toast.promise(
-          api.post("appointment", { services: appointment }),
+          api.post("appointment", {
+            services: appointment,
+            date: inputDate,
+            time: inputTime,
+          }),
           {
             pending: "Realizando seu agendamento, por favor aguarde ...",
             success: "Agendamento realizado com sucesso!",
