@@ -25,9 +25,21 @@ const listLinks = [
     icon: AddCircleIcon,
   },
   {
+    id: 4,
+    label: "Nova categoria",
+    link: paths.NewCategory,
+    icon: AddCircleIcon,
+  },
+  {
     id: 5,
     label: "Lista de serviços",
     link: paths.ListAppointment,
+    icon: ListAltIcon,
+  },
+  {
+    id: 6,
+    label: "Lista das categorias",
+    link: paths.ListCategory,
     icon: ListAltIcon,
   },
 ];
