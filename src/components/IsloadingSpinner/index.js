@@ -8,7 +8,7 @@ const IsloadingSpinner = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false)
-    }, 1500)
+    }, 800)
   }, [])
 
   return <div>{isLoading ? <LoadingSpinner /> : <></>}</div>
