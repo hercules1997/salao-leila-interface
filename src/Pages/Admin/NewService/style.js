@@ -1,13 +1,16 @@
 import ReactSelect from "react-select";
 import styled from "styled-components";
-
+import CloseIcon from "@mui/icons-material/Close";
 import { Button } from "../../../components/Button";
 
 // Estilos para o container principal
 export const Container = styled.div`
+position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+
+
 
   form {
     display: flex;
@@ -21,6 +24,15 @@ export const Container = styled.div`
     box-shadow: 0 0 4px gray;
     gap: 20px;
   }
+`;
+
+export const ButtonCancel = styled(CloseIcon)`
+  color: red;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  border: none;
 `;
 
 // Estilos para rótulos de input
@@ -74,8 +86,11 @@ export const LabelUpload = styled.label`
 // Estilos para o componente ReactSelect
 export const ReactSelectStyles = styled(ReactSelect)`
   color: #000;
+  background-color: #f5f5dc !important;
 
+  outline: none !important;
   .css-10wo9uf-option {
-    outline: none;
+    background-color: #f5f5dc !important;
+
   }
 `;
