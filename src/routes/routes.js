@@ -75,6 +75,46 @@ function AllRoutes() {
             </PrivateRoute>
           }
         />
+        <Route
+          path={paths.EditServices}
+          element={
+            <PrivateRoute component={Admin} isAdmin>
+              <Admin path={paths.EditServices} />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={paths.EditAppointment}
+          element={
+            <PrivateRoute component={Admin} isAdmin>
+              <Admin path={paths.EditAppointment} />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={paths.ListCategory}
+          element={
+            <PrivateRoute component={Admin} isAdmin>
+              <Admin path={paths.ListCategory} />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={paths.EditCategory}
+          element={
+            <PrivateRoute component={Admin} isAdmin>
+              <Admin path={paths.EditCategory} />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={paths.NewCategory}
+          element={
+            <PrivateRoute component={Admin} isAdmin>
+              <Admin path={paths.NewCategory} />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </Router>
   );
