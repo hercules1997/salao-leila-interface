@@ -9,7 +9,17 @@ export * from "./Client/Scheduling";
 export * from "./Client/User";
 export * from "./Client/HomePublic";
 
-export * from "./Admin/AppointmentStatus";
+
+
+export * from "./Admin/NewCategory";
+export * from "./Admin/NewService";
+
 export * from "./Admin/ListAppointment";
+export * from "./Admin/ListServices";
+export * from "./Admin/ListCategory";
+
+export * from "./Admin/EditAppointment";
+export * from "./Admin/EditCategory";
+export * from "./Admin/EditServices";
 
 export * from "./Admin/HomeInit";
