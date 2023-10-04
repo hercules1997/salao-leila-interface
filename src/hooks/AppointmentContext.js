@@ -19,15 +19,16 @@ export const AppointmentProvider = ({ children }) => {
 
   // Função para adicionar um serviço ao agendamento
   const putServiceInAppoitment = async (service) => {
-    const cartIndex = myAppointment.findIndex((serv) => serv.id === service.id);
+    const appointmentIndex = myAppointment.findIndex(
+      (serv) => serv.id === service.id
+    );
     let newApointService = [];
 
-    if (cartIndex >= 0) {
+    if (appointmentIndex >= 0) {
       newApointService = myAppointment;
-      newApointService[cartIndex].quantity =
-        newApointService[cartIndex].quantity + 1;
+      newApointService[appointmentIndex].index += 1;
     } else {
-      service.quantity = 1;
+      service.index = 1;
       newApointService = [...myAppointment, service];
       setMyAppointment(newApointService);
     }
@@ -53,7 +54,11 @@ export const AppointmentProvider = ({ children }) => {
         setMyAppointment(JSON.parse(clientAppointmentData));
       }
     };
+
+
+
     loadUserData();
+
   }, []);
 
   return (
@@ -63,6 +68,7 @@ export const AppointmentProvider = ({ children }) => {
         putServiceInAppoitment,
         myAppointment,
         deleteService,
+
       }}
     >
       {children}
