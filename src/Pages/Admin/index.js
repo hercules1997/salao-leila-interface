@@ -9,7 +9,12 @@ import {
   HomeInit,
   ListAppointment,
   OurServices,
-  AppointmentStatus,
+  NewCategory,
+  EditAppointment,
+  ListServices,
+  EditServices,
+  ListCategory,
+  EditCategory,
 } from "../../Pages";
 import { Container, ContainerItems } from "./style";
 
@@ -23,11 +28,24 @@ function Admin({ path }) {
       <ContainerItems>
         {/* Renderização condicional das páginas com base no caminho (path) */}
         {path === paths.AppointmentStatus && (
-          <AppointmentStatus path={paths.AppointmentStatus} />
+          <ListAppointment path={paths.AppointmentStatus} />
         )}
         {path === paths.ListAppointment && (
-          <ListAppointment path={paths.ListAppointment} />
+          <ListServices path={paths.ListAppointment} />
         )}
+        {path === paths.EditServices && (
+          <EditServices path={paths.EditServices} />
+        )}
+        {path === paths.EditAppointment && (
+          <EditAppointment path={paths.EditAppointment} />
+        )}
+        {path === paths.ListCategory && (
+          <ListCategory  path={paths.ListCategory} />
+        )}
+        {path === paths.EditCategory && (
+          <EditCategory path={paths.EditCategory} />
+        )}
+        {path === paths.NewCategory && <NewCategory path={paths.NewCategory} />}
         {path === paths.Home && <HomeInit />}
         {path === paths.OurServices && <OurServices path={paths.OurServices} />}
         {path === paths.NewService && <NewService path={paths.NewService} />}
